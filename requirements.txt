@@ -1,0 +1,6 @@
+Flask
+PyCryptodome
+PyPDF2
+qrcode
+Pillow
+pyzbar

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verify PDF</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Verify PDF</h1>
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="method">Verification Method:</label>
+                <select class="form-control" id="method" name="method">
+                    <option value="code">Signature Code</option>
+                    <option value="qr">QR Code</option>
+                </select>
+            </div>
+            <div id="code-input" class="form-group">
+                <label for="signature">Signature Code:</label>
+                <input type="text" class="form-control" id="signature" name="signature">
+            </div>
+            <div id="qr-input" class="form-group" style="display:none;">
+                <label for="file">Upload QR Code:</label>
+                <input type="file" class="form-control-file" id="file" name="file">
+            </div>
+            <div class="form-group">
+                <label for="filename">Filename:</label>
+                <input type="text" class="form-control" id="filename" name="filename" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Verify PDF</button>
+        </form>
+        <div id="verification-result" class="mt-4"></div>
+        <div id="pdf-preview" class="mt-4" style="display: none;">
+            <h2>Document Preview</h2>
+            <iframe id="pdf-frame" style="width:100%; height:500px;" frameborder="0"></iframe>
+            <p><a id="download-link" class="btn btn-secondary mt-2" href="#" download>Download PDF</a></p>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
